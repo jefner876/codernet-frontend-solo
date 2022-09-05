@@ -1,15 +1,38 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { onMounted, ref } from "vue";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import router from "./router";
 
+const isLoggedIn = ref(false);
+
+let auth: any;
+
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedIn.value = true;
+    } else {
+      isLoggedIn.value = false;
+    }
+  });
+});
+
+const handleSignOut = () => {
+  signOut(auth).then(() => {
+    router.push("/login");
+  });
+};
 </script>
 
 <template>
-   
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/register">Register</RouterLink>
-        <RouterLink to="/signin">Sign In</RouterLink>
-      </nav>
+  <nav>
+    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/register">Register</RouterLink>
+    <RouterLink to="/signin">Sign In</RouterLink>
+    <button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
+  </nav>
 
   <RouterView />
 </template>
