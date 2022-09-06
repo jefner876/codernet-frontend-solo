@@ -21,7 +21,7 @@ onMounted(() => {
 
 const handleSignOut = () => {
   signOut(auth).then(() => {
-    router.push("/login");
+    router.push("/signin");
   });
 };
 </script>
