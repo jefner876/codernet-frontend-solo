@@ -1,11 +1,3 @@
-<template>
-  <h1>Sign In</h1>
-  <p><input type="text" placeholder="Email" v-model="email" /></p>
-  <p><input type="password" placeholder="Password" v-model="password" /></p>
-  <p v-if="errMsg">{{ errMsg }}</p>
-  <p><button @click="register">Submit</button></p>
-</template>
-
 <script setup lang="ts">
 import { ref } from "vue";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -39,6 +31,14 @@ const register = () => {
     });
 };
 </script>
+
+<template>
+  <h1>Sign In</h1>
+  <p><input type="text" placeholder="Email" v-model="email" /></p>
+  <p><input type="password" placeholder="Password" v-model="password" /></p>
+  <p v-if="errMsg">{{ errMsg }}</p>
+  <p><button @click="register">Submit</button></p>
+</template>
 
 <style scoped>
 h1 {
