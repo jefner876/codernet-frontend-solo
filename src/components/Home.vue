@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+
+
+
+
+
+
+</script>
 
 <template>
   <h3>Welcome to CoderNet</h3>

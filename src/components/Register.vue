@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import router from "@/router";
+import {useUserStore} from '../stores/user'
+
+const store = useUserStore()
+
 
 const email = ref("");
 const password = ref("");
@@ -9,6 +13,10 @@ const username = ref("")
 
 const register = () => {
   const auth = getAuth();
+
+  store.user = username.value
+
+
   // console.log(username.value)
   // email and username is accessed here so use API here in promise.all to send to backend
   createUserWithEmailAndPassword(auth, email.value, password.value)

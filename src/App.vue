@@ -31,7 +31,6 @@ const handleSignOut = () => {
   <nav>
     <div v-if="isLoggedIn">
       <NavBar />
- 
       <button @click="handleSignOut" >Sign Out</button>
     </div>
     <div v-if="!isLoggedIn">
