@@ -5,7 +5,7 @@ let DOB = ref("");
 let location = ref("");
 let bio = ref("");
 
-let buttonStatus = reactive({ edit: true });
+let buttonStatus = reactive({ edit: false, text: "Edit" });
 
 const profile = reactive({
   username: "Hello",
@@ -21,6 +21,7 @@ const handleClick = (event: any) => {
   event.preventDefault();
 
   buttonStatus.edit = !buttonStatus.edit;
+  buttonStatus.text === 'Edit' ? buttonStatus.text = 'Change' : buttonStatus.text = 'Edit'
 
   profile.DOB = parseInt(DOB.value);
   profile.location = location.value;
@@ -54,7 +55,7 @@ const handleClick = (event: any) => {
       v-model="bio"
       v-if="buttonStatus.edit"
     /><br /><br />
-    <button @click="handleClick">Edit</button>
+    <button @click="handleClick">{{buttonStatus.text}}</button>
   </form>
 </template>
 
