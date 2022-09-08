@@ -53,7 +53,7 @@ const handleClick = (event: any) => {
       placeholder="bio"
       v-model="bio"
       v-if="buttonStatus.edit"
-    />
+    /><br /><br />
     <button @click="handleClick">Edit</button>
   </form>
 </template>
