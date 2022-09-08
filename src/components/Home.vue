@@ -1,11 +1,18 @@
 <script setup lang="ts">
-import SignIn from "@/components/SignIn.vue";
+
+
+
+
+
+
+
 </script>
 
 <template>
-  <main>
-    <SignIn />
-  </main>
+  <h3>Welcome to CoderNet</h3>
+  <h2>The Social Media for Coders</h2>
+  
+  
 </template>
 
 <style scoped>

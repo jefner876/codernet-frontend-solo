@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from "vue-router";
 import { onMounted, ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import router from "./router";
+import NavBar from "./components/NavBar.vue";
 
 const isLoggedIn = ref(false);
 
@@ -21,17 +22,21 @@ onMounted(() => {
 
 const handleSignOut = () => {
   signOut(auth).then(() => {
-    router.push("/login");
+    router.push("/signin");
   });
 };
 </script>
 
 <template>
   <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/register">Register</RouterLink>
-    <RouterLink to="/signin">Sign In</RouterLink>
-    <button @click="handleSignOut" v-if="isLoggedIn">Sign Out</button>
+    <div v-if="isLoggedIn">
+      <NavBar />
+      <button @click="handleSignOut" >Sign Out</button>
+    </div>
+    <div v-if="!isLoggedIn">
+      <RouterLink to="/register">Register</RouterLink>
+      <RouterLink to="/signin">Sign In</RouterLink>
+    </div>
   </nav>
 
   <RouterView />
