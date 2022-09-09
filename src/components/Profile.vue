@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
+import { patchProfile } from "../../api";
+import { useUserStore } from "../stores/user";
+
+const store = useUserStore();
 
 let DOB = ref("");
 let location = ref("");
@@ -8,13 +12,13 @@ let bio = ref("");
 let buttonStatus = reactive({ edit: false, text: "Edit" });
 
 const profile = reactive({
-  username: "Hello",
-  email: "Hello@hello.com",
-  DOB: "",
-  location: "Manchester",
-  avatar:
-    "https://gravatar.com/avatar/494331cd1db71a9c5928845bc556782b?s=400&d=robohash&r=x",
-  bio: "Coding....",
+  _id: store._id,
+  username: store.username,
+  email: store.email,
+  DOB: store.DOB,
+  location: store.location,
+  avatar: store.avatar,
+  bio: store.bio,
 });
 
 const handleClick = (event: any) => {
@@ -30,6 +34,18 @@ const handleClick = (event: any) => {
     profile.location = location.value;
     profile.bio = bio.value;
 
+    const newProfile = profile;
+    const id = newProfile._id;
+
+    patchProfile(newProfile, id).then((updatedProfile) => {
+      store._id = updatedProfile._id;
+      store.username = updatedProfile.username;
+      store.email = updatedProfile.email;
+      store.DOB = updatedProfile.DOB;
+      store.location = updatedProfile.location;
+      store.avatar = updatedProfile.avatar;
+      store.bio = updatedProfile.bio;
+    });
   }
 };
 </script>

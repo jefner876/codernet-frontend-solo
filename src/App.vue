@@ -4,7 +4,9 @@ import { onMounted, ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import router from "./router";
 import NavBar from "./components/NavBar.vue";
+import { useUserStore } from "./stores/user";
 
+const store = useUserStore();
 const isLoggedIn = ref(false);
 
 let auth: any;
@@ -22,6 +24,16 @@ onMounted(() => {
 
 const handleSignOut = () => {
   signOut(auth).then(() => {
+
+        store._id = "",
+        store.username = "",
+        store.email = "",
+        store.location = "",
+        store.avatar = "",
+        store.bio = "",
+        store.DOB = ""
+    
+
     router.push("/signin");
   });
 };

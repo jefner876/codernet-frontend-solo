@@ -3,14 +3,12 @@ import {useUserStore} from '../stores/user'
 
 const store = useUserStore()
 
-
-
 </script>
 
 <template class="NavBar">
 
 <nav>
-  <h2>LoggedInUser: {{store.user}}</h2>
+  <h2>LoggedInUser: {{store.username}}</h2>
     <div >
       <RouterLink to="/">Home</RouterLink> {{ "|" }}
       <RouterLink to="/discussions">Discussions</RouterLink> {{ "|" }}
