@@ -10,7 +10,7 @@ let buttonStatus = reactive({ edit: false, text: "Edit" });
 const profile = reactive({
   username: "Hello",
   email: "Hello@hello.com",
-  DOB: '',
+  DOB: "",
   location: "Manchester",
   avatar:
     "https://gravatar.com/avatar/494331cd1db71a9c5928845bc556782b?s=400&d=robohash&r=x",
@@ -21,13 +21,16 @@ const handleClick = (event: any) => {
   event.preventDefault();
 
   buttonStatus.edit = !buttonStatus.edit;
-  buttonStatus.text === 'Edit' ? buttonStatus.text = 'Change' : buttonStatus.text = 'Edit'
+  buttonStatus.text === "Edit"
+    ? (buttonStatus.text = "Change")
+    : (buttonStatus.text = "Edit");
 
-  profile.DOB = DOB.value.toString();
-  profile.location = location.value;
-  profile.bio = bio.value;
+  if (buttonStatus.text === "Edit") {
+    profile.DOB = DOB.value;
+    profile.location = location.value;
+    profile.bio = bio.value;
 
-  console.log(profile)
+  }
 };
 </script>
 
@@ -57,7 +60,7 @@ const handleClick = (event: any) => {
       v-model="bio"
       v-if="buttonStatus.edit"
     /><br /><br />
-    <button @click="handleClick">{{buttonStatus.text}}</button>
+    <button @click="handleClick">{{ buttonStatus.text }}</button>
   </form>
 </template>
 
