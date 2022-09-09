@@ -10,7 +10,7 @@ let buttonStatus = reactive({ edit: false, text: "Edit" });
 const profile = reactive({
   username: "Hello",
   email: "Hello@hello.com",
-  DOB: 0,
+  DOB: '',
   location: "Manchester",
   avatar:
     "https://gravatar.com/avatar/494331cd1db71a9c5928845bc556782b?s=400&d=robohash&r=x",
@@ -23,9 +23,11 @@ const handleClick = (event: any) => {
   buttonStatus.edit = !buttonStatus.edit;
   buttonStatus.text === 'Edit' ? buttonStatus.text = 'Change' : buttonStatus.text = 'Edit'
 
-  profile.DOB = parseInt(DOB.value);
+  profile.DOB = DOB.value.toString();
   profile.location = location.value;
   profile.bio = bio.value;
+
+  console.log(profile)
 };
 </script>
 
@@ -36,7 +38,7 @@ const handleClick = (event: any) => {
     <p>Email: {{ profile.email }}</p>
     <p>Age: {{ profile.DOB }}</p>
     <input
-      type="text"
+      type="date"
       placeholder="DOB"
       v-model="DOB"
       v-if="buttonStatus.edit"
