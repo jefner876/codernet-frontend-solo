@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import router from "@/router";
+import { getUser } from "../../api";
+import { useUserStore } from "@/stores/user";
+
+const store = useUserStore();
 
 const email = ref("");
 const password = ref("");
@@ -10,7 +14,18 @@ const errMsg = ref("");
 const register = () => {
   const auth = getAuth();
   signInWithEmailAndPassword(auth, email.value, password.value)
-    .then((data) => {
+    .then((firebaseUser) => { 
+
+      getUser(firebaseUser.user.email).then((user) => {
+        store._id = user._id;
+        store.username = user.username;
+        store.email = user.email;
+        store.DOB = user.DOB;
+        store.location = user.location;
+        store.avatar = user.avatar;
+        store.bio = user.bio;
+      });
+
       router.push("/");
     })
     .catch((error) => {

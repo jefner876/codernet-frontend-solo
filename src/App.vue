@@ -4,7 +4,10 @@ import { onMounted, ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import router from "./router";
 import NavBar from "./components/NavBar.vue";
+import { useUserStore } from "./stores/user";
+import { getUser } from "../api";
 
+const store = useUserStore();
 const isLoggedIn = ref(false);
 
 let auth: any;
@@ -12,16 +15,41 @@ let auth: any;
 onMounted(() => {
   auth = getAuth();
   onAuthStateChanged(auth, (user) => {
+    
     if (user) {
+      
+      getUser(user.email).then((user) => {
+        store._id = user._id;
+        store.username = user.username;
+        store.email = user.email;
+        store.DOB = user.DOB;
+        store.location = user.location;
+        store.avatar = user.avatar;
+        store.bio = user.bio;
+      })
+
       isLoggedIn.value = true;
+
     } else {
+
       isLoggedIn.value = false;
     }
-  });
+  })
+
+
 });
 
 const handleSignOut = () => {
   signOut(auth).then(() => {
+
+        store._id = "";
+        store.username = "";
+        store.email = "";
+        store.location = "";
+        store.avatar = "";
+        store.bio = "";
+        store.DOB = "";
+
     router.push("/signin");
   });
 };
