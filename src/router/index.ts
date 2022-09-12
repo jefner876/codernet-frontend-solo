@@ -32,6 +32,11 @@ const router = createRouter({
       name: "discussions",
       component: () => import("../views/DiscussionView.vue"),
     },
+    {
+      path: "/discussions/:room",
+      name: "discussions-rooms",
+      component: () => import("../views/ChatRoomView.vue"),
+    },
   ],
 });
 

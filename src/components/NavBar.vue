@@ -16,7 +16,6 @@ const store = useUserStore()
       <RouterLink to="/discussions">Discussions</RouterLink> {{ "|" }}
       <RouterLink to="/profile">Profile</RouterLink> {{ "|" }}
       <RouterLink to="/">Friends</RouterLink> {{ "|" }}
-
     </div>
 
   </nav>
