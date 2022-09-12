@@ -11,16 +11,6 @@ let bio = ref("");
 
 let buttonStatus = reactive({ edit: false, text: "Edit" });
 
-const profile = reactive({
-  _id: store._id,
-  username: store.username,
-  email: store.email,
-  DOB: store.DOB,
-  location: store.location,
-  avatar: store.avatar,
-  bio: store.bio,
-});
-
 const handleClick = (event: any) => {
   event.preventDefault();
 
@@ -30,11 +20,20 @@ const handleClick = (event: any) => {
     : (buttonStatus.text = "Edit");
 
   if (buttonStatus.text === "Edit") {
-    profile.DOB = DOB.value;
-    profile.location = location.value;
-    profile.bio = bio.value;
+    store.DOB = DOB.value;
+    store.location = location.value;
+    store.bio = bio.value;
 
-    const newProfile = profile;
+    const newProfile = {
+      _id: store._id,
+      username: store.username,
+      email: store.email,
+      DOB: store.DOB,
+      location: store.location,
+      avatar: store.avatar,
+      bio: store.bio,
+    };
+
     const id = newProfile._id;
 
     patchProfile(newProfile, id).then((updatedProfile) => {
@@ -52,24 +51,24 @@ const handleClick = (event: any) => {
 
 <template>
   <form>
-    <h2>Username: {{ profile.username }}</h2>
-    <img :src="profile.avatar" />
-    <p>Email: {{ profile.email }}</p>
-    <p>Age: {{ profile.DOB }}</p>
+    <h2>Username: {{ store.username }}</h2>
+    <img :src="store.avatar" />
+    <p>Email: {{ store.email }}</p>
+    <p>Age: {{ store.DOB }}</p>
     <input
       type="date"
       placeholder="DOB"
       v-model="DOB"
       v-if="buttonStatus.edit"
     />
-    <p>Location: {{ profile.location }}</p>
+    <p>Location: {{ store.location }}</p>
     <input
       type="text"
       placeholder="location"
       v-model="location"
       v-if="buttonStatus.edit"
     />
-    <p>About me: {{ profile.bio }}</p>
+    <p>About me: {{ store.bio }}</p>
     <input
       type="text"
       placeholder="bio"
