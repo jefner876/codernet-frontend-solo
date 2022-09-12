@@ -17,6 +17,7 @@ const DemoBoard = discussionBoards.boards.filter((board) => {
 
 
 const handleClick = (value: String) => {
+  
   console.log(value);
 };
 </script>
@@ -31,8 +32,10 @@ const handleClick = (value: String) => {
     <p>Subject: {{ board.subject }}</p>
     <p>Posts: {{ board.postCount }}</p>
     <p>Subscribers: {{ board.subscribers }}</p>
-    <button @click="handleClick(board.subject)">Chat</button>
-    <br />
+    <button @click="handleClick(board.subject)">
+      Chat</button>
+      <RouterLink :to="'/discussions/' + board.subject">View Chat Room</RouterLink>
+      <br />
   </div>
 
   <h2>Technology</h2>
@@ -42,6 +45,7 @@ const handleClick = (value: String) => {
     <p>Posts: {{ board.postCount }}</p>
     <p>{{ board.subscribers }}</p>
     <button @click="handleClick(board.subject)">Chat</button>
+    <RouterLink :to="'/discussions/' + board.subject">View Chat Room</RouterLink>
     <br />
   </div>
 
@@ -53,6 +57,7 @@ const handleClick = (value: String) => {
     <p>Posts: {{ board.postCount }}</p>
     <p>{{ board.subscribers }}</p>
     <button @click="handleClick(board.subject)">Chat</button>
+    <RouterLink :to="'/discussions/' + board.subject">View Chat Room</RouterLink>
     <br />
   </div>
 </template>
