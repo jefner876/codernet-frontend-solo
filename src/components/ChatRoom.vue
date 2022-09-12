@@ -11,7 +11,7 @@ const store = useUserStore()
 
 //room and username for multiple rooms
 const room = route.params.room //gives you name of room from URL
-const username = store.user
+const username = store.username
 
 
 const currentUser = ref(""); //have been using global context in place of this.
@@ -20,7 +20,7 @@ const welcomeMessage = ref('')
 const messages = ref([{ id: 1, date:'Pinned Message' ,text: "Welcome to the chat room! Please respect other users 🧑🏼‍💻 ", user: "Admin" }]);
 const chatText = ref("");
 
-const socket = io("http://localhost:3000")
+const socket = io("http://localhost:3001")
 socket.on('userJoin', (message) => {
   console.log(message);
 })
@@ -54,10 +54,10 @@ const addMessage = () => {
     id: new Date().getTime(),
     date: moment().format('h:mm a'),
     text: chatText.value,
-    user: store.user,
+    user: store.username,
   };
   //emitting message to server
-  const socket = io("http://localhost:3000")
+  const socket = io("http://localhost:3001")
 
   //need to send username and room so socket io works with multiple rooms
   socket.emit('chatMessage', {chatMessage, username, room})
@@ -68,7 +68,7 @@ const addMessage = () => {
 
   <div>
     <div class="list-container">
-      Hello {{store.user}}👋  You are now in the {{room}} chatroom! 
+      Hello {{store.username}}👋  You are now in the {{room}} chatroom! 
       <div v-for="message in messages" :key="message.id">
         <b>
           {{ message.user }}
@@ -107,7 +107,6 @@ const addMessage = () => {
   font-size: 20px;
   padding: 5px;
   margin-bottom: 5px;
-  text-align: ;
   font-weight: bold;
 }
 
