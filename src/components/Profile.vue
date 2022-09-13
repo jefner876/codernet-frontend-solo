@@ -54,7 +54,7 @@ const handleClick = (event: any) => {
 
 <template>
 
-  <form>
+
 
   <div class="wrap-container">
 
@@ -101,6 +101,7 @@ const handleClick = (event: any) => {
       <button class="button" @click="handleClick">{{ buttonStatus.text }}</button>
     </div>
   </div>
+
 </template>
 
 <style scoped>
