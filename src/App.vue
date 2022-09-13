@@ -50,10 +50,13 @@ const handleSignOut = () => {
 </script>
 
 <template>
+  <div class="page-container">
+
   <nav>
     <div v-if="isLoggedIn">
       <NavBar />
-      <button @click="handleSignOut">Sign Out</button>
+
+      <button class="button" @click="handleSignOut" >Sign Out</button>
     </div>
     <div v-if="!isLoggedIn">
       <RouterLink to="/register">Register</RouterLink>
@@ -61,24 +64,31 @@ const handleSignOut = () => {
     </div>
   </nav>
   <RouterView />
+</div>
+
 </template>
 
 <style scoped>
-h2{
+
+
+
+
+
+  * {
+    margin: 0;
+    padding: 0;
+    background-color: hsl(278, 54%, 89%);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  h2{
   margin:0
 }
-* {
-  padding: 0;
-  margin: 0;
-  background-color: hsl(278, 54%, 89%);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  border-width: 0;
-}
 
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+  .page-container {
+    height: 95vh;
+    padding-top: 30px;
+  }
+
 
 nav {
   width: 100%;
@@ -87,23 +97,15 @@ nav {
   margin-top: 2rem;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+  .button {
+    margin-top: 5px;
+    background-color: grey;
+    padding: 3px 5px;
+    border: black solid 2px;
+    color: white;
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
+  }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
 
 @media (min-width: 1024px) {
   header {
@@ -112,19 +114,6 @@ nav a:first-of-type {
     padding-right: calc(var(--section-gap) / 2);
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
 }
 </style>
