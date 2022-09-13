@@ -51,7 +51,7 @@ const handleClick = (event: any) => {
 
 <template>
   <form>
-    <h2>Username: {{ store.username }}</h2>
+    <h2 class="title">Username: {{ store.username }}</h2>
     <img :src="store.avatar" />
     <p>Email: {{ store.email }}</p>
     <p>Age: {{ store.DOB }}</p>
@@ -80,6 +80,9 @@ const handleClick = (event: any) => {
 </template>
 
 <style scoped>
+  .title{
+    margin: 0;
+  }
 img {
   width: 200px;
   height: 200px;
