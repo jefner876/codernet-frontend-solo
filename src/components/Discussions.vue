@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { discussionBoards } from "../../Boards";
+console.log(discussionBoards);
 
 const languageBoard = discussionBoards.boards.filter((board) => {
   return board.topic === "language";
@@ -14,8 +15,6 @@ const DemoBoard = discussionBoards.boards.filter((board) => {
   return board.topic === 'demographics';
 });
 
-
-
 const handleClick = (value: String) => {
   
   console.log(value);
@@ -28,7 +27,8 @@ const handleClick = (value: String) => {
   <h2>Language</h2>
 
   <div v-for="(board, index) in languageBoard" :key="index" class="card">
-    <p>{{ board.icon }}<br /></p>
+    <img :src="board.icon" width="50" height="50" />
+    <!-- <p>{{ board.icon }}<br /></p> -->
     <p>Subject: {{ board.subject }}</p>
     <p>Posts: {{ board.postCount }}</p>
     <p>Subscribers: {{ board.subscribers }}</p>
@@ -40,7 +40,7 @@ const handleClick = (value: String) => {
 
   <h2>Technology</h2>
   <div v-for="(board, index) in TechBoard" :key="index" class="card">
-    <p>{{ board.icon }}</p>
+    <img :src="board.icon" width="50" height="50" />
     <p>Subject: {{ board.subject }}</p>
     <p>Posts: {{ board.postCount }}</p>
     <p>{{ board.subscribers }}</p>
@@ -50,9 +50,8 @@ const handleClick = (value: String) => {
   </div>
 
   <h2>Demographics</h2>
-
   <div v-for="(board, index) in DemoBoard" :key="index" class="card">
-    <p>{{ board.icon }}</p>
+    <img :src="board.icon" width="50" height="50" />
     <p>Subject: {{ board.subject }}</p>
     <p>Posts: {{ board.postCount }}</p>
     <p>{{ board.subscribers }}</p>
