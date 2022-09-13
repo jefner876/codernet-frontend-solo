@@ -24,6 +24,9 @@ const handleClick = (event: any) => {
     store.location = location.value;
     store.bio = bio.value;
 
+    location.value = "";
+    bio.value = "";
+
     const newProfile = {
       _id: store._id,
       username: store.username,
