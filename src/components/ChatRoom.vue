@@ -4,6 +4,7 @@ import {io} from 'socket.io-client'
 import {useUserStore} from '../stores/user'
 import moment from 'moment'
 import {useRoute} from "vue-router";
+import { getMessagesByRoom } from "../../api";
 
 const route = useRoute()
 
@@ -13,6 +14,14 @@ const store = useUserStore()
 const room = route.params.room //gives you name of room from URL
 const username = store.username
 const userId= store._id
+
+let oldMessages = ref('')
+
+getMessagesByRoom(room).then((data) => {
+  console.log(data.messages);
+  oldMessages.value = data.messages
+  
+})
 
 
 const currentUser = ref(""); //have been using global context in place of this.
@@ -53,7 +62,7 @@ const addMessage = () => {
   //get message text
   const chatMessage = {
     id: new Date().getTime(),
-    date: moment().format('h:mm a'),
+    date: moment().format('DD/MM/YYYY h:mm a'),
     text: chatText.value,
     user: store.username,
   };
@@ -70,6 +79,13 @@ const addMessage = () => {
   <div>
     <div class="list-container">
       Hello {{store.username}}👋  You are now in the {{room}} chatroom! 
+      <div class="message-history" v-for="message in oldMessages" >
+        <b>
+          {{message["user"].username}}
+        </b>
+        : {{ message.body }}  - {{moment(message.created_at).format('DD/MM/YYYY h:mm a')}}
+      
+      </div>
       <div v-for="message in messages" :key="message.id">
         <b>
           {{ message.user }}
