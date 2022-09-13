@@ -5,6 +5,8 @@ import {useUserStore} from '../stores/user'
 import moment from 'moment'
 import {useRoute} from "vue-router";
 import { getMessagesByRoom } from "../../api";
+import { discussionBoards } from "../../Boards";
+console.log(discussionBoards);
 
 const route = useRoute()
 
@@ -14,6 +16,11 @@ const store = useUserStore()
 const room = route.params.room //gives you name of room from URL
 const username = store.username
 const userId= store._id
+
+const board = discussionBoards.boards.filter((board) => {
+  return board.subject === room
+})
+console.log(board);
 
 let oldMessages = ref('')
 
@@ -75,23 +82,38 @@ const addMessage = () => {
 </script>
 
 <template>
-
-  <div>
+  <div class="background">
     <div class="list-container">
-      Hello {{store.username}}👋  You are now in the {{room}} chatroom! <br />
-      <b>Admin</b> : Welcome to the chat room! Please respect other users 🧑🏼‍💻 - Pinned Message <br />
-      <div class="message-history" v-for="message in oldMessages" >
+      <img :src="board[0].icon" width="100" height="100"/>
+      <h2 class='chat-header'>
+        Hello {{store.username}}👋  You are now in the {{room}} chatroom! <br />
+      </h2>
+      <div class="message-box admin-message">
+        <b>Admin</b> : Welcome to the chat room! Please respect other users 🧑🏼‍💻 - Pinned Message <br />
+      </div>
+
+      <div class="message-history message-box" v-for="message in oldMessages" >
+        <p>
+          <img width='20' height='20' :src='message.user.avatar'/>
         <b>
-          {{message["user"].username}}
+          {{message.user.username}}
         </b>
-        : {{ message.body }}  - {{moment(message.created_at).format('DD/MM/YYYY h:mm a')}}
+          {{moment(message.created_at).format('DD/MM/YYYY h:mm a')}}
+        </p>
+        {{ message.body }} 
       
       </div>
-      <div v-for="message in messages" :key="message.id">
+      <div class="message-box" v-for="message in messages" :key="message.id">
+        <p>
+          <img width='20' height='20' :src='store.avatar'/>
         <b>
           {{ message.user }}
         </b>
-        : {{ message.text }}  - {{message.date}}
+          {{message.date}}
+        </p>
+        <p>
+          {{ message.text }} 
+        </p>
       </div>
     </div>
     <div class="text-input-container">
@@ -106,6 +128,10 @@ const addMessage = () => {
 </template>
 
 <style scoped>
+.background{
+  background-color: hsl(278, 54%, 89%);
+}
+
 .parent-container {
   width: 100%;
   height: 100%;
@@ -143,5 +169,32 @@ const addMessage = () => {
   height: 70px;
   padding: 10px;
   box-sizing: border-box;
+}
+
+/* Chat Page */
+.message-box{
+background-color: hsl(278, 54%, 78%);
+padding: 5px;
+margin: 5px;
+border-radius: 5px;
+padding-left: 15px;
+}
+
+
+.admin-message{
+  background-color:hsl(278, 54%, 65%)
+}
+
+.chat-header{
+  text-align: center;
+}
+.list-container{
+  margin-bottom: 100px;
+}
+.text-input-container{
+position: fixed;
+bottom: 2px;
+height: 25px;
+width: 98vw;
 }
 </style>
