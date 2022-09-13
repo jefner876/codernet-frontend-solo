@@ -12,6 +12,7 @@ const store = useUserStore()
 //room and username for multiple rooms
 const room = route.params.room //gives you name of room from URL
 const username = store.username
+const userId= store._id
 
 
 const currentUser = ref(""); //have been using global context in place of this.
@@ -20,12 +21,12 @@ const welcomeMessage = ref('')
 const messages = ref([{ id: 1, date:'Pinned Message' ,text: "Welcome to the chat room! Please respect other users 🧑🏼‍💻 ", user: "Admin" }]);
 const chatText = ref("");
 
-const socket = io("http://localhost:3001")
+const socket = io("http://localhost:3000",{ transports: ['websocket'] })
 socket.on('userJoin', (message) => {
   console.log(message);
 })
 
-socket.emit('joinRoom', {username,room})
+socket.emit('joinRoom', {username,room, userId})
 
 socket.on('welcomeMessage', (data) => {
   console.log(data);
@@ -37,7 +38,7 @@ socket.on('message:received', (data) => {
 })
 
 //message for when user leaves (might need to put this on specific rooms)
-socket.on('userLeave', (data) => {
+socket.on('disconnect', (data) => {
   console.log(data);
 })
 
@@ -57,10 +58,10 @@ const addMessage = () => {
     user: store.username,
   };
   //emitting message to server
-  const socket = io("http://localhost:3001")
+  const socket = io("http://localhost:3000",{ transports: ['websocket'] } )
 
   //need to send username and room so socket io works with multiple rooms
-  socket.emit('chatMessage', {chatMessage, username, room})
+  socket.emit('chatMessage', {chatMessage, username, room, userId})
 };
 </script>
 
