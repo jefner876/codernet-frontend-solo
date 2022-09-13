@@ -27,7 +27,7 @@ getMessagesByRoom(room).then((data) => {
 const currentUser = ref(""); //have been using global context in place of this.
 
 const welcomeMessage = ref('')
-const messages = ref([{ id: 1, date:'Pinned Message' ,text: "Welcome to the chat room! Please respect other users 🧑🏼‍💻 ", user: "Admin" }]);
+const messages = ref([]);
 const chatText = ref("");
 
 const socket = io("http://localhost:3000",{ transports: ['websocket'] })
@@ -78,7 +78,8 @@ const addMessage = () => {
 
   <div>
     <div class="list-container">
-      Hello {{store.username}}👋  You are now in the {{room}} chatroom! 
+      Hello {{store.username}}👋  You are now in the {{room}} chatroom! <br />
+      <b>Admin</b> : Welcome to the chat room! Please respect other users 🧑🏼‍💻 - Pinned Message <br />
       <div class="message-history" v-for="message in oldMessages" >
         <b>
           {{message["user"].username}}
