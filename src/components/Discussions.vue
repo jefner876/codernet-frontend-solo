@@ -6,64 +6,65 @@ const languageBoard = discussionBoards.boards.filter((board) => {
   return board.topic === "language";
 });
 
-
 const TechBoard = discussionBoards.boards.filter((board) => {
-  return board.topic === 'tech';
+  return board.topic === "tech";
 });
 
 const DemoBoard = discussionBoards.boards.filter((board) => {
-  return board.topic === 'demographics';
+  return board.topic === "demographics";
 });
-
-const handleClick = (value: String) => {
-  
-  console.log(value);
-};
 </script>
 
 <template>
   <h2 class="title">Discussion Board</h2>
+  <div class="discussion-wrapper">
+    <div class="card-wrapper">
+      <h2>Language</h2>
+      <div v-for="(board, index) in languageBoard" :key="index" class="card">
+        <img :src="board.icon" width="50" height="50" />
+        <!-- <p>{{ board.icon }}<br /></p> -->
+        <h3>{{ board.subject }}</h3>
+        <p>Posts: {{ board.postCount }}</p>
+        <RouterLink :to="'/discussions/' + board.subject"
+          >Join the discussion!</RouterLink
+        >
+        <br />
+      </div>
+    </div>
 
-  <h2>Language</h2>
+    <div class="card-wrapper">
+      <h2>Technology</h2>
+      <div v-for="(board, index) in TechBoard" :key="index" class="card">
+        <img :src="board.icon" width="50" height="50" />
+        <h3>{{ board.subject }}</h3>
+        <p>Posts: {{ board.postCount }}</p>
+        <RouterLink :to="'/discussions/' + board.subject"
+          >Join the discussion!</RouterLink
+        >
+        <br />
+      </div>
+    </div>
 
-  <div v-for="(board, index) in languageBoard" :key="index" class="card">
-    <img :src="board.icon" width="50" height="50" />
-    <!-- <p>{{ board.icon }}<br /></p> -->
-    <p>Subject: {{ board.subject }}</p>
-    <p>Posts: {{ board.postCount }}</p>
-    <p>Subscribers: {{ board.subscribers }}</p>
-    <button @click="handleClick(board.subject)">
-      Chat</button>
-      <RouterLink :to="'/discussions/' + board.subject">View Chat Room</RouterLink>
-      <br />
-  </div>
-
-  <h2>Technology</h2>
-  <div v-for="(board, index) in TechBoard" :key="index" class="card">
-    <img :src="board.icon" width="50" height="50" />
-    <p>Subject: {{ board.subject }}</p>
-    <p>Posts: {{ board.postCount }}</p>
-    <p>{{ board.subscribers }}</p>
-    <button @click="handleClick(board.subject)">Chat</button>
-    <RouterLink :to="'/discussions/' + board.subject">View Chat Room</RouterLink>
-    <br />
-  </div>
-
-  <h2>Demographics</h2>
-  <div v-for="(board, index) in DemoBoard" :key="index" class="card">
-    <img :src="board.icon" width="50" height="50" />
-    <p>Subject: {{ board.subject }}</p>
-    <p>Posts: {{ board.postCount }}</p>
-    <p>{{ board.subscribers }}</p>
-    <button @click="handleClick(board.subject)">Chat</button>
-    <RouterLink :to="'/discussions/' + board.subject">View Chat Room</RouterLink>
-    <br />
+    <div class="card-wrapper">
+      <h2>Demographics</h2>
+      <div v-for="(board, index) in DemoBoard" :key="index" class="card">
+        <img :src="board.icon" width="50" height="50" />
+        <h3>{{ board.subject }}</h3>
+        <p>Posts: {{ board.postCount }}</p>
+        <RouterLink :to="'/discussions/' + board.subject"
+          >Join the discussion!</RouterLink
+        >
+        <br />
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .title {
   text-align: center;
+  padding: 10px;
+  margin: 0;
 }
 
 h2 {
@@ -72,7 +73,24 @@ h2 {
 
 .card {
   border: solid black 2px;
+  background-color: hsl(278, 54%, 78%);
+  margin: 10px;
+  padding: 5px;
   border-width: 2px;
-  
+  border-radius: 10px;
+}
+
+.card-wrapper{
+  text-align: center;
+}
+@media(min-width:600px){
+  .discussion-wrapper{
+    display: flex;
+    justify-content: space-around;
+  }
+  .card{
+    width: 25vw;
+  }
+
 }
 </style>

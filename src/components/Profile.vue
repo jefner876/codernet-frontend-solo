@@ -53,6 +53,9 @@ const handleClick = (event: any) => {
 </script>
 
 <template>
+
+  <form>
+
   <div class="wrap-container">
 
     <form class="container">
@@ -146,8 +149,6 @@ const handleClick = (event: any) => {
     padding-top: 25px;
     padding-bottom: 45px;
   }
-
-
 
 img {
   width: 200px;

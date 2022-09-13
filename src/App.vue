@@ -15,9 +15,7 @@ let auth: any;
 onMounted(() => {
   auth = getAuth();
   onAuthStateChanged(auth, (user) => {
-    
     if (user) {
-      
       getUser(user.email).then((user) => {
         console.log(user);
         store._id = user._id;
@@ -27,29 +25,24 @@ onMounted(() => {
         store.location = user.location;
         store.avatar = user.avatar;
         store.bio = user.bio;
-      })
+      });
 
       isLoggedIn.value = true;
-
     } else {
-
       isLoggedIn.value = false;
     }
-  })
-
-
+  });
 });
 
 const handleSignOut = () => {
   signOut(auth).then(() => {
-
-        store._id = "";
-        store.username = "";
-        store.email = "";
-        store.location = "";
-        store.avatar = "";
-        store.bio = "";
-        store.DOB = "";
+    store._id = "";
+    store.username = "";
+    store.email = "";
+    store.location = "";
+    store.avatar = "";
+    store.bio = "";
+    store.DOB = "";
 
     router.push("/signin");
   });
@@ -62,6 +55,7 @@ const handleSignOut = () => {
   <nav>
     <div v-if="isLoggedIn">
       <NavBar />
+
       <button class="button" @click="handleSignOut" >Sign Out</button>
     </div>
     <div v-if="!isLoggedIn">
@@ -69,7 +63,6 @@ const handleSignOut = () => {
       <RouterLink to="/signin">Sign In</RouterLink>
     </div>
   </nav>
-
   <RouterView />
 </div>
 
@@ -77,11 +70,19 @@ const handleSignOut = () => {
 
 <style scoped>
 
+
+
+
+
   * {
     margin: 0;
     padding: 0;
     background-color: hsl(278, 54%, 89%);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
+  h2{
+  margin:0
+}
 
   .page-container {
     height: 95vh;
