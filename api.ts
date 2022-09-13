@@ -1,4 +1,3 @@
-import type { LogLevel } from "@firebase/logger";
 import axios from "axios";
 
 export const patchProfile = (newProfile, id) => {
@@ -26,3 +25,11 @@ export const getUser = (email) => {
       return data.user;
     });
 };
+
+export const getMessagesByRoom = (room) => {
+  return axios
+  .get(`http://localhost:3000/api/messages/${room}`)
+  .then(({data}) => {
+    return data
+  })
+}
