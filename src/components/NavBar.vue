@@ -13,6 +13,7 @@ const store = useUserStore()
     <div class = "top-container">
 
       <img :src="coderNET" class="logo" />
+      <h1 class="title">CoderNET</h1>
     </div>
 
     <div class="links">
@@ -37,13 +38,17 @@ const store = useUserStore()
     background-color: hsl(238, 54%, 89%);
   }
 
-  .user {
-    font-family: Arial, Helvetica, sans-serif;
-    padding-bottom: 12px;
-  }
 .top-container{
   display: flex;
-  justify-content: center;
+  justify-content: left ;
+}
+.title{
+  margin-top: 1.5rem;
+  margin-left: -136px;
+  width: 93vw;
+  text-align: center;
+  font-size: xx-large;
+  background-color: transparent;
 }
   .container {
     width: 94%;
@@ -88,6 +93,18 @@ const store = useUserStore()
     border-left: black solid 2px;
   }
 
+
+  @media (max-width: 600px) {
+  .top-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+
+  }
+  .title{
+    margin: 0px;
+  }
+}
   /* .link-home {
     background-color: grey;
     padding: 3px 5px;
