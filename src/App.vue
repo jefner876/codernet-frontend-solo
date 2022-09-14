@@ -56,8 +56,8 @@ const handleSignOut = () => {
         <button class="button" @click="handleSignOut">Sign Out</button>
       </div>
       <div v-if="!isLoggedIn">
-        <RouterLink to="/register">Register</RouterLink>
-        <RouterLink to="/signin">Sign In</RouterLink>
+        <RouterLink to="/register" class="login-button left-button">Register</RouterLink>
+        <RouterLink to="/signin" class="login-button">Sign In</RouterLink>
       </div>
     </nav>
     <RouterView />
@@ -106,5 +106,26 @@ nav {
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
+}
+
+.login-button{
+  font-size: large;
+
+
+background-color: hsl(238, 54%, 45%);
+padding: 5px;
+padding-left: 20px;
+padding-right: 20px;
+color: white;
+border: none;
+
+
+border-top: black solid 2px;
+border-bottom: black solid 2px;
+border-right: black solid 2px;
+}
+
+.left-button{
+  border-left: black solid 2px;
 }
 </style>
