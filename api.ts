@@ -28,3 +28,9 @@ export const getMessagesByRoom = (room) => {
     return data;
   });
 };
+
+export const getFriends = () => {
+  return axios.get(`${api}/users`).then(({ data }) => {
+    return data.users;
+  });
+};

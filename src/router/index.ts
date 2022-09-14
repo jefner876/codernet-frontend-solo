@@ -37,6 +37,11 @@ const router = createRouter({
       name: "discussions-rooms",
       component: () => import("../views/ChatRoomView.vue"),
     },
+    {
+      path: "/friends",
+      name: "friends",
+      component: () => import("../views/FriendView.vue"),
+    },
   ],
 });
 
