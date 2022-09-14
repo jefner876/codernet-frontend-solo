@@ -7,6 +7,8 @@ import { useRoute } from "vue-router";
 import { getMessagesByRoom } from "../../api";
 import { discussionBoards } from "../../Boards";
 console.log(discussionBoards);
+import { server } from "../../.secrets";
+
 
 const route = useRoute();
 
@@ -35,7 +37,7 @@ const welcomeMessage = ref("");
 const messages = ref([]);
 const chatText = ref("");
 
-const socket = io("http://localhost:3000", { transports: ["websocket"] });
+const socket = io(server, { transports: ["websocket"] });
 socket.on("userJoin", (message) => {
   console.log(message);
 });
@@ -70,7 +72,7 @@ const addMessage = () => {
     user: store.username,
   };
   //emitting message to server
-  const socket = io("http://localhost:3000", { transports: ["websocket"] });
+  const socket = io(server, { transports: ["websocket"] });
 
   //need to send username and room so socket io works with multiple rooms
   socket.emit("chatMessage", { chatMessage, username, room, userId });
