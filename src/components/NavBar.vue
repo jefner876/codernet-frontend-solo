@@ -11,7 +11,9 @@ const store = useUserStore()
   <div class="container">
     <div class="user">
 
-      <h2>LoggedInUser: {{store.username}}</h2>
+      <img class="small-avatar" :src="store.avatar" />
+
+      <h2>{{store.username}}</h2>
 
     </div>
     <div class="links">
@@ -47,44 +49,25 @@ const store = useUserStore()
     margin: auto;
     padding-top: 12px;
     
-
   }
 
-
-
   .links {
-
     font-family: Arial, Helvetica, sans-serif;
     color: red;
     border-top: 2px black solid;
     background-color: blueviolet;
-    padding-top: 10px;
-    padding-bottom: 10px;
-
-
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
-
   .link-home {
-
     background-color: grey;
     padding: 3px 5px;
     border: black solid 2px;
     color: white;
-
-  
-
-    /* border: black solid 2px;
-    background-color: red;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px; */
-
   }
 
   .link-discussion {
-
     background-color: grey;
     padding: 3px 5px;
     border: none;
@@ -93,11 +76,9 @@ const store = useUserStore()
     border-top: black solid 2px;
     border-bottom: black solid 2px;
     border-right: black solid 2px;
-
   }
 
   .link-profile {
-
     background-color: grey;
     padding: 3px 5px;
     border: none;
@@ -106,11 +87,9 @@ const store = useUserStore()
     border-top: black solid 2px;
     border-bottom: black solid 2px;
     border-right: black solid 2px;
-
   }
 
   .link-friends {
-
     background-color: grey;
     padding: 3px 5px;
     border: none;
@@ -119,8 +98,11 @@ const store = useUserStore()
     border-top: black solid 2px;
     border-bottom: black solid 2px;
     border-right: black solid 2px;
+  }
 
-
+  .small-avatar {
+    max-width: 20px;
+    max-height: 20px;
   }
 
 
