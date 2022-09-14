@@ -2,7 +2,7 @@
     import { getFriends } from '../../api';
     import { ref } from 'vue'
 
-    const friendsList = ref([])
+    const friendsList = ref<any>([])
 
     getFriends().then((value)=> {
         console.log(value)
