@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { setPersistence } from "@firebase/auth";
 import { ref, reactive } from "vue";
 import { patchProfile } from "../../api";
 import { useUserStore } from "../stores/user";
@@ -116,8 +115,6 @@ const handleClick = (event: any) => {
 * {
     margin: 0;
     padding: 0;
-    background-color: hsl(278, 54%, 89%);
-
   }
 
   .container {

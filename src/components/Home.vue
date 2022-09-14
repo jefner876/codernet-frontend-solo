@@ -24,11 +24,6 @@ import coderNET from '../img/CoderNET_.png'
     margin: 0;
     padding: 0;
   }
-
-  
-  section {
-    background-color: hsl(214, 36%, 57%);
-  }
   
   h3 {
     padding-bottom: 1em;
@@ -46,19 +41,9 @@ import coderNET from '../img/CoderNET_.png'
   padding-right: 20%;
 
   }
-/* .text {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
-} */
+
 
 .container {
-  /* margin-left: 35%;
-  column-count: 2;
-  column-width: 50px;
-  column-fill: auto; */
   text-align: center;
   padding-top: 1em;
   padding-left: 20%;
