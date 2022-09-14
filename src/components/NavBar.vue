@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {useUserStore} from '../stores/user'
+import coderNET from '../img/CoderNET_.png'
 
 const store = useUserStore()
 
@@ -9,13 +10,11 @@ const store = useUserStore()
 
 <nav>
   <div class="container">
-    <div class="user">
+    <div class = "top-container">
 
-      <img class="small-avatar" :src="store.avatar" />
-
-      <h2>{{store.username}}</h2>
-
+      <img :src="coderNET" class="logo" />
     </div>
+
     <div class="links">
       <RouterLink  class="nav-button nav-button1" to="/">Home</RouterLink> 
       <RouterLink class="nav-button" to="/discussions">Discussions</RouterLink> 
@@ -42,14 +41,22 @@ const store = useUserStore()
     font-family: Arial, Helvetica, sans-serif;
     padding-bottom: 12px;
   }
-
+.top-container{
+  display: flex;
+  justify-content: center;
+}
   .container {
-    width: 80%;
+    width: 94%;
     border: solid black 2px;
     margin: auto;
-    padding-top: 12px;
-    
+   
   }
+  
+    .logo {
+      max-width: 120px;
+      max-height: 120px;
+      padding: .5rem;
+    }
 
   .links {
     font-family: Arial, Helvetica, sans-serif;
@@ -58,6 +65,7 @@ const store = useUserStore()
     background-color: hsl(238, 54%, 70%);
     padding-top: 20px;
     padding-bottom: 20px;
+    max-width: 96vw;
   }
 
   .nav-button{
@@ -65,9 +73,9 @@ const store = useUserStore()
 
 
     background-color: hsl(238, 54%, 45%);
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0.5rem;
+    padding-left: 2vw;
+    padding-right: 2vw;
     color: white;
     border: none;
 
@@ -120,10 +128,6 @@ const store = useUserStore()
     border-right: black solid 2px;
   } */
 
-  .small-avatar {
-    max-width: 20px;
-    max-height: 20px;
-  }
 
 
 </style>
