@@ -116,8 +116,6 @@ const handleClick = (event: any) => {
 * {
     margin: 0;
     padding: 0;
-    background-color: hsl(278, 54%, 89%);
-
   }
 
   .container {

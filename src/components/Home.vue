@@ -18,9 +18,7 @@ import coderNET from '../img/CoderNET_.png'
 
 <style scoped>
 
-section {
-  background-color: hsl(278, 54%, 89%);
-}
+
 
 .text {
   display: flex;

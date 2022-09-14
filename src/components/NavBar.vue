@@ -17,10 +17,10 @@ const store = useUserStore()
 
     </div>
     <div class="links">
-      <RouterLink class="link-home" to="/">Home</RouterLink> 
-      <RouterLink class="link-discussion" to="/discussions">Discussions</RouterLink> 
-      <RouterLink class="link-profile" to="/profile">Profile</RouterLink> 
-      <RouterLink class="link-friends" to="/">Friends</RouterLink> 
+      <RouterLink  class="nav-button nav-button1" to="/">Home</RouterLink> 
+      <RouterLink class="nav-button" to="/discussions">Discussions</RouterLink> 
+      <RouterLink class="nav-button" to="/profile">Profile</RouterLink> 
+      <RouterLink class="nav-button" to="/">Friends</RouterLink> 
     </div>
     
   </div>
@@ -35,7 +35,7 @@ const store = useUserStore()
   * {
     margin: 0;
     padding: 0;
-    background-color: hsl(278, 54%, 89%);
+    background-color: hsl(238, 54%, 89%);
   }
 
   .user {
@@ -55,12 +55,32 @@ const store = useUserStore()
     font-family: Arial, Helvetica, sans-serif;
     color: red;
     border-top: 2px black solid;
-    background-color: blueviolet;
+    background-color: hsl(238, 54%, 70%);
     padding-top: 20px;
     padding-bottom: 20px;
   }
 
-  .link-home {
+  .nav-button{
+    font-size: large;
+
+
+    background-color: hsl(238, 54%, 45%);
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    border: none;
+
+
+    border-top: black solid 2px;
+    border-bottom: black solid 2px;
+    border-right: black solid 2px;
+  }
+  .nav-button1 {
+    border-left: black solid 2px;
+  }
+
+  /* .link-home {
     background-color: grey;
     padding: 3px 5px;
     border: black solid 2px;
@@ -98,7 +118,7 @@ const store = useUserStore()
     border-top: black solid 2px;
     border-bottom: black solid 2px;
     border-right: black solid 2px;
-  }
+  } */
 
   .small-avatar {
     max-width: 20px;

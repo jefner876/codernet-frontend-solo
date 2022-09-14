@@ -68,7 +68,7 @@ const handleSignOut = () => {
 * {
   margin: 0;
   padding: 0;
-  background-color: hsl(278, 54%, 89%);
+  background-color: hsl(238, 36%, 89%);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 h2 {
@@ -89,7 +89,7 @@ nav {
 
 .button {
   margin-top: 5px;
-  background-color: grey;
+  background-color: hsl(238, 54%, 45%);;
   padding: 3px 5px;
   border: black solid 2px;
   color: white;
