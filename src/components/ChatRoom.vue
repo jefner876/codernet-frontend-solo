@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { io } from "socket.io-client";
 import { useUserStore } from "../stores/user";
-import moment from "moment";
+import moment, { defineLocale } from "moment";
 import { useRoute } from "vue-router";
 import { getMessagesByRoom } from "../../api";
 import { discussionBoards } from "../../Boards";
@@ -25,7 +25,6 @@ console.log(board);
 let oldMessages = ref("");
 
 getMessagesByRoom(room).then((data) => {
-  console.log(data.messages);
   oldMessages.value = data.messages;
 });
 
@@ -38,6 +37,14 @@ const chatText = ref("");
 const socket = io("http://localhost:3000", { transports: ["websocket"] });
 socket.on("userJoin", (message) => {
   console.log(message);
+  const joinMessage: any = {
+    id: new Date().getTime(),
+    date: moment().format("DD/MM/YYYY h:mm a"),
+    text: message,
+    user: 'Admin',
+  };
+  messages.value = messages.value.concat(joinMessage);
+  
 });
 
 socket.emit("joinRoom", { username, room, userId });
@@ -47,7 +54,9 @@ socket.on("welcomeMessage", (data) => {
   welcomeMessage.value = data;
   console.log(welcomeMessage);
 });
+
 socket.on("message:received", (data) => {
+  console.log(data);
   messages.value = messages.value.concat(data);
 });
 
@@ -114,6 +123,7 @@ const addMessage = () => {
           {{ message.text }}
         </p>
       </div>
+
     </div>
     <div class="text-input-container">
       <textarea
@@ -158,9 +168,7 @@ const addMessage = () => {
   font-size: 20px;
 }
 
-.text-input-container {
-  height: 100vh;
-}
+
 .text-message {
   width: 100%;
   position: absolute;
@@ -188,8 +196,10 @@ const addMessage = () => {
 }
 .list-container {
   margin-bottom: 100px;
+  height:auto;
 }
 .text-input-container {
+  margin-top: -100px;
   position: fixed;
   bottom: 2px;
   height: 25px;
@@ -208,4 +218,5 @@ const addMessage = () => {
 .chat-logo {
   padding: 15px;
 }
+
 </style>
