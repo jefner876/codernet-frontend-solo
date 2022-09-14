@@ -48,33 +48,32 @@ const register = () => {
 </script>
 
 <template>
+  <div class="container">
+
   <h1>Sign In</h1>
   <p><input type="text" placeholder="Email" v-model="email" /></p>
   <p><input type="password" placeholder="Password" v-model="password" /></p>
   <p v-if="errMsg">{{ errMsg }}</p>
-  <p><button @click="register">Submit</button></p>
+  <p><button class="button" @click="register">Submit</button></p>
+
+  </div>
+
 </template>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  top: -10px;
-}
 
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
+  .container {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    text-align: center;
+    height: 40vh;
   }
-}
+
+  .button {
+    background-color: grey;
+    padding: 3px 5px;
+    border: black solid 2px;
+    color: white;
+  }
+
 </style>

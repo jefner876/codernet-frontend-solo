@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { setPersistence } from "@firebase/auth";
 import { ref, reactive } from "vue";
 import { patchProfile } from "../../api";
 import { useUserStore } from "../stores/user";
@@ -8,6 +9,7 @@ const store = useUserStore();
 let DOB = ref("");
 let location = ref("");
 let bio = ref("");
+let avatar = ref("")
 
 let buttonStatus = reactive({ edit: false, text: "Edit" });
 
@@ -20,6 +22,11 @@ const handleClick = (event: any) => {
     : (buttonStatus.text = "Edit");
 
   if (buttonStatus.text === "Edit") {
+
+    if (avatar.value !== "") {
+      store.avatar = avatar.value
+    }
+
     store.DOB = DOB.value;
     store.location = location.value;
     store.bio = bio.value;
@@ -65,7 +72,7 @@ const handleClick = (event: any) => {
       
       
       <div class="form-block">
-        
+        <input type="text" placeholder="new avatar URL" v-model="avatar" v-if="buttonStatus.edit" />
         <p>Email: {{ store.email }}</p>
         <p>Age: {{ store.DOB }}</p>
         <input
@@ -91,15 +98,15 @@ const handleClick = (event: any) => {
         
       </div>
       
-      <br /><br />
+      <br />
       
       
     </form>
-    <div class="button-container">
-      
-      
-      <button class="button" @click="handleClick">{{ buttonStatus.text }}</button>
-    </div>
+  </div>
+
+  <div class="button-container">
+    
+    <button class="button" @click="handleClick">{{ buttonStatus.text }}</button>
   </div>
 
 </template>
@@ -122,12 +129,12 @@ const handleClick = (event: any) => {
   }
 
   .form-block {
-
     text-align: left;
     transform: translate(-50%, 0);
     position: fixed;
     margin-top: 15px;
     left: 51%;
+    line-height: 1.5rem;
 
   }
 
@@ -140,9 +147,10 @@ const handleClick = (event: any) => {
   }
 
   .button-container {
-    display: flex;
+    padding-top: 10px;
+    display: flex; 
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
 
   }
 
@@ -152,8 +160,8 @@ const handleClick = (event: any) => {
   }
 
 img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 
 }
 </style>

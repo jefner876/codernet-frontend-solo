@@ -40,11 +40,31 @@ const register = () => {
 </script>
 
 <template>
+  <div class="container">
+
   <h1>Create an Account</h1>
   <p><input type="text" placeholder="Username" v-model="username" /></p>
   <p><input type="text" placeholder="Email" v-model="email" /></p>
   <p><input type="password" placeholder="Password" v-model="password" /></p>
-  <p><button @click="register">Submit</button></p>
+  <p><button class="button" @click="register">Submit</button></p>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    text-align: center;
+    height: 40vh;
+  }
+
+  .button {
+    background-color: grey;
+    padding: 3px 5px;
+    border: black solid 2px;
+    color: white;
+  }
+
+
+</style>

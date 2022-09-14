@@ -123,7 +123,6 @@ const addMessage = () => {
           {{ message.text }}
         </p>
       </div>
-
     </div>
     <div class="text-input-container">
       <textarea
@@ -196,14 +195,22 @@ const addMessage = () => {
 }
 .list-container {
   margin-bottom: 100px;
-  height:auto;
+  height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+.list-container::after{
+  content:'';
+  display: block;
+  height: 80px;
 }
 .text-input-container {
   margin-top: -100px;
   position: fixed;
   bottom: 2px;
-  height: 25px;
-  width: 98vw;
+  height: 60px;
+  margin-left: 1vh;
+  width: 93vw;
 }
 
 .chat-header-wrapper {

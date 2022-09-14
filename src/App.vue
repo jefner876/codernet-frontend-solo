@@ -17,7 +17,6 @@ onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       getUser(user.email).then((user) => {
-        console.log(user);
         store._id = user._id;
         store.username = user.username;
         store.email = user.email;
