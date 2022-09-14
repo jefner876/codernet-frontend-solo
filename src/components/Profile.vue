@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { setPersistence } from "@firebase/auth";
 import { ref, reactive } from "vue";
 import { patchProfile } from "../../api";
 import { useUserStore } from "../stores/user";
