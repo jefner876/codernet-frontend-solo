@@ -50,44 +50,35 @@ const handleSignOut = () => {
 
 <template>
   <div class="page-container">
-
-  <nav>
-    <div v-if="isLoggedIn">
-      <NavBar />
-
-      <button class="button" @click="handleSignOut" >Sign Out</button>
-    </div>
-    <div v-if="!isLoggedIn">
-      <RouterLink to="/register">Register</RouterLink>
-      <RouterLink to="/signin">Sign In</RouterLink>
-    </div>
-  </nav>
-  <RouterView />
-</div>
-
+    <nav>
+      <div v-if="isLoggedIn">
+        <NavBar />
+        <button class="button" @click="handleSignOut">Sign Out</button>
+      </div>
+      <div v-if="!isLoggedIn">
+        <RouterLink to="/register">Register</RouterLink>
+        <RouterLink to="/signin">Sign In</RouterLink>
+      </div>
+    </nav>
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
-
-
-
-
-
-  * {
-    margin: 0;
-    padding: 0;
-    background-color: hsl(278, 54%, 89%);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-  h2{
-  margin:0
+* {
+  margin: 0;
+  padding: 0;
+  background-color: hsl(238, 36%, 89%);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h2 {
+  margin: 0;
 }
 
-  .page-container {
-    height: 95vh;
-    padding-top: 30px;
-  }
-
+.page-container {
+  height: 95vh;
+  padding-top: 30px;
+}
 
 nav {
   width: 100%;
@@ -96,15 +87,18 @@ nav {
   margin-top: 2rem;
 }
 
-  .button {
-    margin-top: 5px;
-    background-color: grey;
-    padding: 3px 5px;
-    border: black solid 2px;
-    color: white;
-
-  }
-
+.button {
+  margin-top: 5px;
+  background-color: hsl(238, 54%, 45%);;
+  padding: 3px 5px;
+  border: black solid 2px;
+  color: white;
+  position:absolute;
+  top: 90px;
+  right:12vw;
+  /* float: right;
+  margin-right: 10vw; */
+}
 
 @media (min-width: 1024px) {
   header {
@@ -112,7 +106,5 @@ nav {
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
-
-
 }
 </style>

@@ -98,21 +98,25 @@ const addMessage = () => {
 
       <div class="message-history message-box" v-for="message in oldMessages">
         <p>
-          <img width="20" height="20" :src="message.user.avatar" />
+          <img class="avatar" :src="message.user.avatar" />
           <b>
             {{ message.user.username }}
           </b>
-          {{ moment(message.created_at).format("DD/MM/YYYY h:mm a") }}
+          <div class="date">
+            {{ moment(message.created_at).format("DD/MM/YYYY h:mm a") }}
+          </div>
         </p>
         {{ message.body }}
       </div>
       <div class="message-box" v-for="message in messages" :key="message.id">
         <p>
-          <img width="20" height="20" :src="store.avatar" />
+          <img class="avatar" :src="store.avatar" />
           <b>
             {{ message.user }}
           </b>
-          {{ message.date }}
+          <div class="date">
+            {{ message.date }}
+          </div>
         </p>
         <p>
           {{ message.text }}
@@ -131,9 +135,7 @@ const addMessage = () => {
 </template>
 
 <style scoped>
-.background {
-  background-color: hsl(278, 54%, 89%);
-}
+
 
 .parent-container {
   width: 100%;
@@ -174,7 +176,7 @@ const addMessage = () => {
 
 /* Chat Page */
 .message-box {
-  background-color: hsl(278, 54%, 78%);
+  background-color: hsl(238, 54%, 78%);
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
@@ -182,7 +184,7 @@ const addMessage = () => {
 }
 
 .admin-message {
-  background-color: hsl(278, 54%, 65%);
+  background-color: hsl(238, 54%, 65%);
 }
 
 .chat-header {
@@ -221,4 +223,14 @@ const addMessage = () => {
   padding: 15px;
 }
 
+.avatar{
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.date{
+  text-align: right;
+  margin-top: -20px;
+
+}
 </style>

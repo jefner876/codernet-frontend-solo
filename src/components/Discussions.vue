@@ -93,7 +93,7 @@ h2 {
 
 .card {
   border: solid black 2px;
-  background-color: hsl(278, 54%, 78%);
+  background-color: hsl(238, 54%, 78%);
   margin: 10px;
   padding: 5px;
   border-width: 2px;
