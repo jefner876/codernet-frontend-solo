@@ -20,7 +20,7 @@ const store = useUserStore()
       <RouterLink  class="nav-button nav-button1" to="/">Home</RouterLink> 
       <RouterLink class="nav-button" to="/discussions">Discussions</RouterLink> 
       <RouterLink class="nav-button" to="/profile">Profile</RouterLink> 
-      <RouterLink class="nav-button" to="/">Friends</RouterLink> 
+      <RouterLink class="nav-button" to="/friends">Friends</RouterLink> 
     </div>
     
   </div>
