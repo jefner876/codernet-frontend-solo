@@ -74,7 +74,7 @@ const handleClick = (event: any) => {
       <div class="form-block">
         <input type="text" placeholder="new avatar URL" v-model="avatar" v-if="buttonStatus.edit" />
         <p>Email: {{ store.email }}</p>
-        <p>Age: {{ store.DOB }}</p>
+        <p>DOB: {{ store.DOB }}</p>
         <input
         type="date"
         placeholder="DOB"
@@ -160,8 +160,10 @@ const handleClick = (event: any) => {
   }
 
 img {
-  width: 150px;
-  height: 150px;
+  max-width: 150px;
+  max-height: 150px;
+  min-width: 150px;
+  min-height: 150px;
 
 }
 </style>
