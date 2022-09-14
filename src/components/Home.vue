@@ -7,10 +7,12 @@ import coderNET from '../img/CoderNET_.png'
 <template>
 
   <section>
-    <h3 class="text">Welcome to CoderNet</h3>
+    <h3 class="text">Welcome to CoderNET</h3>
     <h2 class="text">The Social Media for Coders</h2>
     <img :src="coderNET" class="coderNet-img" />
-    <p class="text">This is a hub for coders to discuss all coding topics from all demographics. <br /> If you want to discuss coding language, technology, or just have a good old chat with your fellow coders, <br /> then come along and jump into one of our many chat rooms designed just for you!</p>
+    <div class="container">
+      <p class="text">This is a hub for coders to discuss all coding topics from all demographics. If you want to discuss coding language, technology, or just have a good old chat with your fellow coders, then come along and jump into one of our many chat rooms designed just for you!</p>
+    </div>
   </section>  
 </template>
 
@@ -28,8 +30,11 @@ import coderNET from '../img/CoderNET_.png'
   font-family: Arial, Helvetica, sans-serif;
 }
 
-p {
-  margin-left: 15%;
+.container {
+  margin-left: 35%;
+  column-count: 2;
+  column-width: 50px;
+  column-fill: auto;
 }
 
 .coderNet-img {
