@@ -160,8 +160,8 @@ const handleClick = (event: any) => {
   }
 
 img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 
 }
 </style>
