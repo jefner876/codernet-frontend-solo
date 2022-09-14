@@ -6,7 +6,8 @@ import moment, { defineLocale } from "moment";
 import { useRoute } from "vue-router";
 import { getMessagesByRoom } from "../../api";
 import { discussionBoards } from "../../Boards";
-console.log(discussionBoards);
+import { server } from "../../.secrets";
+
 
 const route = useRoute();
 
@@ -20,7 +21,6 @@ const userId = store._id;
 const board = discussionBoards.boards.filter((board) => {
   return board.subject === room;
 });
-console.log(board);
 
 let oldMessages = ref("");
 
@@ -34,9 +34,8 @@ const welcomeMessage = ref("");
 const messages = ref([]);
 const chatText = ref("");
 
-const socket = io("http://localhost:3000", { transports: ["websocket"] });
+const socket = io(server, { transports: ["websocket"] });
 socket.on("userJoin", (message) => {
-  console.log(message);
   const joinMessage: any = {
     id: new Date().getTime(),
     date: moment().format("DD/MM/YYYY h:mm a"),
@@ -50,19 +49,15 @@ socket.on("userJoin", (message) => {
 socket.emit("joinRoom", { username, room, userId });
 
 socket.on("welcomeMessage", (data) => {
-  console.log(data);
   welcomeMessage.value = data;
-  console.log(welcomeMessage);
 });
 
 socket.on("message:received", (data) => {
-  console.log(data);
   messages.value = messages.value.concat(data);
 });
 
 //message for when user leaves (might need to put this on specific rooms)
 socket.on("disconnect", (data) => {
-  console.log(data);
 });
 
 const sendMessage = () => {
@@ -79,7 +74,7 @@ const addMessage = () => {
     user: store.username,
   };
   //emitting message to server
-  const socket = io("http://localhost:3000", { transports: ["websocket"] });
+  const socket = io(server, { transports: ["websocket"] });
 
   //need to send username and room so socket io works with multiple rooms
   socket.emit("chatMessage", { chatMessage, username, room, userId });

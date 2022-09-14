@@ -15,13 +15,10 @@ const postCountBoards: any = ref({
   "Young Adult Males": 0,
 });
 
-console.log(discussionBoards);
 
 discussionBoards.boards.forEach((board) => {
   getMessagesByRoom(board.subject).then((data) => {
     const topic = board.subject;
-    console.log(topic);
-    console.log(postCountBoards.value);
     postCountBoards.value[topic] = data.messages.length;
   });
 });
