@@ -25,7 +25,7 @@
     <div v-for="friend in friendsList" class="friend" :key="friend._id">
         <div class="card">
 
-            <h2>Username:{{friend.username}}</h2>
+            <h2>Username: {{friend.username}}</h2>
             <img :src="friend.avatar" /><br/>
             <button class="button">Add Friend</button>
             <button class="button">Delete Friend</button>
