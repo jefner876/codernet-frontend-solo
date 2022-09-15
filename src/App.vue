@@ -51,13 +51,19 @@ const handleSignOut = () => {
 <template>
   <div class="page-container">
     <nav>
-      <div v-if="isLoggedIn">
+      <div v-if="isLoggedIn" >
         <NavBar />
-        <button class="button" @click="handleSignOut">Sign Out</button>
+        <div class="user">
+        <img class="small-avatar" :src="store.avatar" />
+      
+         <h2>{{store.username}}</h2>
+      
+         <button class="button" @click="handleSignOut">Sign Out</button>
+    </div>
       </div>
       <div v-if="!isLoggedIn">
-        <RouterLink to="/register">Register</RouterLink>
-        <RouterLink to="/signin">Sign In</RouterLink>
+        <RouterLink to="/register" class="login-button left-button">Register</RouterLink>
+        <RouterLink to="/signin" class="login-button">Sign In</RouterLink>
       </div>
     </nav>
     <RouterView />
@@ -77,7 +83,7 @@ h2 {
 
 .page-container {
   height: 95vh;
-  padding-top: 30px;
+  padding-top: 10px;
 }
 
 nav {
@@ -87,24 +93,51 @@ nav {
   margin-top: 2rem;
 }
 
+.user{
+  position:absolute;
+  top: 60px;
+  right:8vw;
+}
 .button {
   margin-top: 5px;
   background-color: hsl(238, 54%, 45%);;
   padding: 3px 5px;
   border: black solid 2px;
   color: white;
-  position:absolute;
-  top: 90px;
-  right:12vw;
   /* float: right;
   margin-right: 10vw; */
 }
 
+.small-avatar {
+    max-width: 20px;
+    max-height: 20px;
+  }
 @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
+}
+
+.login-button{
+  font-size: large;
+  
+  
+  background-color: hsl(238, 54%, 45%);
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  border: none;
+  
+  
+  border-top: black solid 2px;
+  border-bottom: black solid 2px;
+  border-right: black solid 2px;
+}
+
+.left-button{
+  border-left: black solid 2px;
 }
 </style>

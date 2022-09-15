@@ -122,6 +122,7 @@ const handleClick = (event: any) => {
     padding: 20px;
     text-align: center;
     height: 40vh;
+    
 
   }
 
@@ -129,18 +130,25 @@ const handleClick = (event: any) => {
     text-align: left;
     transform: translate(-50%, 0);
     position: fixed;
-    margin-top: 15px;
-    left: 51%;
+    margin-top: 1em;
+    left: 50.4%;
     line-height: 1.5rem;
+    
 
   }
 
   .button {
-    background-color: grey;
     padding: 3px 5px;
-    border: black solid 2px;
     color: white;
 
+  background-color: hsl(238, 54%, 45%);;
+  border: black solid 2px;
+  color: white;
+
+  }
+
+  h2 {
+    margin-bottom: 1em;
   }
 
   .button-container {
@@ -148,19 +156,17 @@ const handleClick = (event: any) => {
     display: flex; 
     align-items: center;
     justify-content: center; 
-
   }
 
   .wrap-container {
-    padding-top: 25px;
     padding-bottom: 45px;
   }
 
 img {
-  max-width: 150px;
-  max-height: 150px;
-  min-width: 150px;
-  min-height: 150px;
+  max-width: 200px;
+  max-height: 200px;
+  min-width: 200px;
+  min-height: 200px;
 
 }
 </style>

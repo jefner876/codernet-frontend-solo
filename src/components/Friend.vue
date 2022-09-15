@@ -15,6 +15,8 @@
 
 <template>
 
+    <div class="container">
+        
     <h2 class="header">COMING SOON... :D</h2>
 
 
@@ -23,7 +25,7 @@
     <div v-for="friend in friendsList" class="friend" :key="friend._id">
         <div class="card">
 
-            <h2>Username:{{friend.username}}</h2>
+            <h2>Username: {{friend.username}}</h2>
             <img :src="friend.avatar" /><br/>
             <button class="button">Add Friend</button>
             <button class="button">Delete Friend</button>
@@ -32,10 +34,18 @@
       
 
     </div>
+</div>
+
 
 </template>
 
 <style scoped>
+
+
+    .container {
+
+        margin-bottom: 5em;
+    }
 
     .header {
         text-align: center;
@@ -46,6 +56,7 @@
     .friend {
         text-align: center;
         margin-top: 1em;
+        
   
     }
 
@@ -56,9 +67,18 @@
         max-height: 150px;
     }
 
-    button {
+    .button {
         margin-top: 1em;
-
+        font-size: large;
+        background-color: hsl(238, 54%, 45%);
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: white;
+        border: none;
+        border-top: black solid 2px;
+        border-bottom: black solid 2px;
+        border-right: black solid 2px;
     }
 
 </style>
