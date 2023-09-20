@@ -22,7 +22,7 @@ const board = discussionBoards.boards.filter((board) => {
   return board.subject === room;
 });
 
-let oldMessages = ref("");
+let oldMessages = ref<any>("");
 
 getMessagesByRoom(room).then((data) => {
   oldMessages.value = data.messages;
@@ -31,7 +31,7 @@ getMessagesByRoom(room).then((data) => {
 const currentUser = ref(""); //have been using global context in place of this.
 
 const welcomeMessage = ref("");
-const messages = ref([]);
+const messages = ref<any>([]);
 const chatText = ref("");
 
 const socket = io(server, { transports: ["websocket"] });
